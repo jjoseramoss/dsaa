@@ -8,7 +8,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-mono);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -49,38 +49,38 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: oklch(0.31 0.11 262);
+  --foreground: oklch(0.985 0.01 90);
+  --card: oklch(0.31 0.11 262);
+  --card-foreground: oklch(0.985 0.01 90);
+  --popover: oklch(0.31 0.11 262);
+  --popover-foreground: oklch(0.985 0.01 90);
+  --primary: oklch(0.9 0.06 90);
+  --primary-foreground: oklch(0.26 0.11 262);
+  --secondary: oklch(0.34 0.105 262);
+  --secondary-foreground: oklch(0.985 0.01 90);
+  --muted: oklch(0.34 0.095 262);
+  --muted-foreground: oklch(0.9 0.03 95);
+  --accent: oklch(0.62 0.18 80);
+  --accent-foreground: oklch(0.21 0.11 262);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
+  --border: oklch(0.5 0.11 262 / 35%);
+  --input: oklch(0.5 0.11 262 / 35%);
+  --ring: oklch(0.92 0.03 95);
+  --chart-1: oklch(0.92 0.03 95);
+  --chart-2: oklch(0.82 0.09 80);
+  --chart-3: oklch(0.8 0.11 160);
+  --chart-4: oklch(0.84 0.08 305);
+  --chart-5: oklch(0.86 0.07 35);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: oklch(0.31 0.11 262);
+  --sidebar-foreground: oklch(0.985 0.01 90);
+  --sidebar-primary: oklch(0.9 0.06 90);
+  --sidebar-primary-foreground: oklch(0.26 0.11 262);
+  --sidebar-accent: oklch(0.34 0.095 262);
+  --sidebar-accent-foreground: oklch(0.985 0.01 90);
+  --sidebar-border: oklch(0.5 0.11 262 / 35%);
+  --sidebar-ring: oklch(0.92 0.03 95);
 }
 
 .dark {
@@ -127,4 +127,286 @@
   html {
     @apply font-sans;
   }
+}
+
+@keyframes dsaa-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dsaa-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dsaa-blob {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, -12px, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes dsaa-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dsaa-shine {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.55;
+  }
+  60% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+.dsaa-enter {
+  animation: dsaa-fade-up 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.dsaa-stagger > * {
+  animation: dsaa-fade-up 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.dsaa-stagger > *:nth-child(1) {
+  animation-delay: 40ms;
+}
+
+.dsaa-stagger > *:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.dsaa-stagger > *:nth-child(3) {
+  animation-delay: 140ms;
+}
+
+.dsaa-stagger > *:nth-child(4) {
+  animation-delay: 190ms;
+}
+
+.dsaa-stagger > *:nth-child(5) {
+  animation-delay: 240ms;
+}
+
+.dsaa-card {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.dsaa-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 50px rgba(26, 22, 45, 0.12);
+  border-color: color-mix(in oklab, var(--border) 55%, var(--foreground) 10%);
+}
+
+.dsaa-grid {
+  opacity: 0.22;
+}
+
+.dsaa-blueprint {
+  background-color: var(--background);
+  background-image: linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--foreground) 22%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      color-mix(in oklab, var(--foreground) 16%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 50% 15%, black 0%, transparent 72%);
+}
+
+.dsaa-blueprint-fine {
+  background-image: linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--foreground) 10%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      color-mix(in oklab, var(--foreground) 8%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 16px 16px;
+  opacity: 0.34;
+}
+
+.dsaa-blob {
+  filter: blur(64px);
+  opacity: 0.12;
+  animation: dsaa-blob 9s ease-in-out infinite;
+}
+
+.dsaa-blob-a {
+  background: radial-gradient(circle at 30% 30%, oklch(0.92 0.03 95), transparent 60%);
+}
+
+.dsaa-blob-b {
+  background: radial-gradient(circle at 30% 30%, oklch(0.82 0.09 80), transparent 60%);
+  animation-delay: -2.4s;
+}
+
+.dsaa-blob-c {
+  background: radial-gradient(circle at 30% 30%, oklch(0.8 0.11 160), transparent 60%);
+  animation-delay: -4.2s;
+}
+
+.dsaa-hero-gradient {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--background) 86%, oklch(0.72 0.18 268) 14%),
+    color-mix(in oklab, var(--background) 86%, oklch(0.78 0.16 165) 14%),
+    color-mix(in oklab, var(--background) 90%, oklch(0.82 0.14 80) 10%)
+  );
+  opacity: 0.7;
+}
+
+.dsaa-glass {
+  background: color-mix(in oklab, var(--background) 82%, white);
+  border-color: color-mix(in oklab, var(--border) 70%, transparent);
+}
+
+.dsaa-graph-overlay {
+  opacity: 0.78;
+  animation: dsaa-fade-in 900ms ease both;
+}
+
+.dsaa-graph-line {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation: dsaa-line 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.dsaa-graph-node {
+  transform-origin: center;
+  animation: dsaa-node 2.8s ease-in-out infinite;
+}
+
+@keyframes dsaa-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dsaa-node {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -2px, 0) scale(1.06);
+  }
+}
+
+.dsaa-spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  border: 2px solid color-mix(in oklab, var(--border) 80%, transparent);
+  border-top-color: var(--foreground);
+  animation: dsaa-spin 700ms linear infinite;
+}
+
+.dsaa-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.dsaa-shine::after {
+  content: "";
+  position: absolute;
+  inset: -40% auto -40% 0;
+  width: 60%;
+  transform: translateX(-120%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--primary-foreground) 55%, transparent),
+    transparent
+  );
+  animation: dsaa-shine 2200ms ease-in-out infinite;
+}
+
+.dsaa-mark {
+  width: 14px;
+  height: 14px;
+  border-radius: 6px;
+  background: color-mix(in oklab, var(--foreground) 92%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--foreground) 45%, transparent);
+}
+
+.dsaa-type-hero {
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.dsaa-type-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.dsaa-glasses {
+  --pupil-x: 0px;
+  --pupil-y: 0px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dsaa-lens {
+  position: relative;
+  width: 22px;
+  height: 18px;
+  border-radius: 6px;
+  border: 2px solid color-mix(in oklab, var(--foreground) 85%, transparent);
+  background: color-mix(in oklab, var(--background) 70%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--foreground) 20%, transparent);
+}
+
+.dsaa-bridge {
+  width: 10px;
+  height: 2px;
+  background: color-mix(in oklab, var(--foreground) 80%, transparent);
+}
+
+.dsaa-eye {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.dsaa-pupil {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--foreground) 95%, transparent);
+  transform: translate3d(var(--pupil-x), var(--pupil-y), 0);
+  transition: transform 40ms linear;
 }
